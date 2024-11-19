@@ -1,0 +1,19 @@
+MODEL:                          # 模型的主要配置
+  TYPE: vssm                   # 模型类型，这里是“vssm”，可能代表一种特定的视觉语义模型
+  NAME: vssm1_small_0229       # 模型的名称，可能用于区分不同版本或配置
+  DROP_PATH_RATE: 0.3         # DropPath 正则化的比率，用于减少过拟合，通过随机丢弃部分路径来实现
+
+  VSSM:                        # VSSM (Visual Semantic Segmentation Model) 的具体配置
+    EMBED_DIM: 96              # 嵌入维度，表示特征嵌入的维度大小
+    DEPTHS: [ 2, 2, 15, 2 ]    # 每个阶段的深度，表示每一层的块数，例如第二层有15个块
+    SSM_D_STATE: 1             # 状态维度，可能用于某种状态空间模型
+    SSM_DT_RANK: "auto"        # 状态空间模型的秩，设置为“auto”表示自动调整
+    SSM_RATIO: 2.0             # 状态空间模型的比例系数，可能影响特征融合的方式
+    SSM_CONV: 3                 # 可能表示卷积层的数量或类型
+    SSM_CONV_BIAS: false        # 是否在卷积层中使用偏置，false表示不使用
+    SSM_FORWARDTYPE: "v3noz"   # 前向传播的类型，可能指定了一种特定的计算方式
+    MLP_RATIO: 4.0             # 多层感知器的比例，可能与输出的特征维度相关
+    DOWNSAMPLE: "v3"           # 下采样的方法，指定使用的具体技术或版本
+    PATCHEMBED: "v2"           # 图像块嵌入的方法或版本
+
+# 50.4 + 8.6 + 90min/e + 36G   # 注释，可能是关于模型性能、训练时间或资源需求的摘要
